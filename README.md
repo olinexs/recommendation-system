@@ -41,8 +41,10 @@ follow all the steps in main.ipynb.
 ## Setting Up the MySQL Database
 1. Install MySQL
 2. Create Database:
+   
 ```bash
 CREATE DATABASE recommendation_system;
+
 3. Create Tables:
 ```bash
 USE recommendation_system;
