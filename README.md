@@ -42,6 +42,6 @@ follow all the steps in main.ipynb.
 1. Install MySQL
 2. Create Database:
   login first
-''bash
+```bash
 CREATE DATABASE recommendation_system;
 
