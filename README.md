@@ -40,3 +40,19 @@ Before you begin, ensure you have the following installed:
    ```bash
    cd backend
    pip install -r requirements.txt
+
+2. **Load and Preprocess Data**:
+   - Place your dataset (e.g., dataset.csv) in the backend/data/ folder.
+   - Use a Python script to load and preprocess the data. For example:
+
+   ```bash
+   import pandas as pd
+   from sklearn.feature_extraction.text import TfidfVectorizer
+   from sklearn.metrics.pairwise import cosine_similarity
+   
+   # Load dataset
+   df = pd.read_csv('data/dataset.csv')
+   
+   # Preprocess data (e.g., text cleaning, feature extraction)
+   tfidf = TfidfVectorizer(stop_words='english')
+   tfidf_matrix = tfidf.fit_transform(df['description'])
