@@ -75,18 +75,20 @@ in terminal, run this to open the directory:
    ```bash
    cd backend
 
+
 Run the Flask Server by:
    ```bash
    python app.py
+
 
 ## Running the React Frontend
 in different terminal/split the terminal to open different directory:
    ```bash
    cd frontend
-
+Install:
    ```bash
    npm install
-
+start the react:
    ```bash
    npm start
 
