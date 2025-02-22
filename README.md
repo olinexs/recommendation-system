@@ -9,17 +9,6 @@ This is a Flask and React-based product recommendation system. It uses **collabo
 
 ---
 
-## Table of Contents
-1. [Prerequisites](#prerequisites)
-2. [Loading and Training Models](#loading-and-training-models)
-3. [Saving Models as Pickle Files](#saving-models-as-pickle-files)
-4. [Setting Up the MySQL Database](#setting-up-the-mysql-database)
-5. [Running the Flask Backend](#running-the-flask-backend)
-6. [Running the React Frontend](#running-the-react-frontend)
-7. [Deployment](#deployment)
-8. [Contributing](#contributing)
-9. [License](#license)
-
 ---
 
 ## Prerequisites
@@ -45,7 +34,7 @@ follow all the steps in main.ipynb.
 ```bash
 CREATE DATABASE recommendation_system;
 
-
+---
 3. Create Tables:
 
 ```bash
@@ -74,7 +63,7 @@ CREATE TABLE ratings (
     FOREIGN KEY (product_id) REFERENCES products(asin)
 );
 
-
+---
 
 4. **Update Database Credentials in backend/app.py**:
   ```bash
@@ -82,11 +71,12 @@ CREATE TABLE ratings (
   app.config['MYSQL_USER'] = 'root'
   app.config['MYSQL_PASSWORD'] = 'your_password'
   app.config['MYSQL_DB'] = 'recommendation_system'
-
+---
 ## Running the Flask Backend
 in terminal, run this to open the directory:
 ```bash
 cd backend
+
 Run the Flask Server by:
 ```bash
 python app.py
