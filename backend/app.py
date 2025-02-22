@@ -12,7 +12,7 @@ CORS(app)
 # MySQL configuration
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'  
-app.config['MYSQL_PASSWORD'] = 'CP048048'  
+app.config['MYSQL_PASSWORD'] = 'password'  
 app.config['MYSQL_DB'] = 'recommendation_system'
 
 mysql = MySQL(app)
