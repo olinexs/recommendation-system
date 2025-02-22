@@ -29,66 +29,66 @@ follow all the steps in main.ipynb.
 
 ## Setting Up the MySQL Database
 1. Install MySQL
+
 2. Create Database:
    
-```bash
-CREATE DATABASE recommendation_system;
+   ```bash
+   CREATE DATABASE recommendation_system;
 
----
 3. Create Tables:
 
-```bash
-USE recommendation_system;
-
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
-);
-
-CREATE TABLE products (
-    asin VARCHAR(255) PRIMARY KEY,
-    title VARCHAR(255),
-    brand VARCHAR(255),
-    rating FLOAT,
-    image_url VARCHAR(255)
-);
-
-CREATE TABLE ratings (
-    user_id INT,
-    product_id VARCHAR(255),
-    rating FLOAT,
-    PRIMARY KEY (user_id, product_id),
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (product_id) REFERENCES products(asin)
-);
-
----
+   ```bash
+   USE recommendation_system;
+   
+   CREATE TABLE users (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       username VARCHAR(255) NOT NULL UNIQUE,
+       password VARCHAR(255) NOT NULL
+   );
+   
+   CREATE TABLE products (
+       asin VARCHAR(255) PRIMARY KEY,
+       title VARCHAR(255),
+       brand VARCHAR(255),
+       rating FLOAT,
+       image_url VARCHAR(255)
+   );
+   
+   CREATE TABLE ratings (
+       user_id INT,
+       product_id VARCHAR(255),
+       rating FLOAT,
+       PRIMARY KEY (user_id, product_id),
+       FOREIGN KEY (user_id) REFERENCES users(id),
+       FOREIGN KEY (product_id) REFERENCES products(asin)
+   );
 
 4. **Update Database Credentials in backend/app.py**:
-  ```bash
-  app.config['MYSQL_HOST'] = 'localhost'
-  app.config['MYSQL_USER'] = 'root'
-  app.config['MYSQL_PASSWORD'] = 'your_password'
-  app.config['MYSQL_DB'] = 'recommendation_system'
+     ```bash
+     app.config['MYSQL_HOST'] = 'localhost'
+     app.config['MYSQL_USER'] = 'root'
+     app.config['MYSQL_PASSWORD'] = 'your_password'
+     app.config['MYSQL_DB'] = 'recommendation_system'
 ---
 ## Running the Flask Backend
 in terminal, run this to open the directory:
-```bash
-cd backend
+   ```bash
+   cd backend
 
 Run the Flask Server by:
-```bash
-python app.py
+   ```bash
+   python app.py
 
 ## Running the React Frontend
 in different terminal/split the terminal to open different directory:
-```bash
-cd frontend
-```bash
-npm install
-```bash
-npm start
+   ```bash
+   cd frontend
+
+   ```bash
+   npm install
+
+   ```bash
+   npm start
 
 The frontend will start at http://localhost:3000. or click the link  in the terminal
 
