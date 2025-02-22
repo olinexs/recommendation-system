@@ -45,23 +45,6 @@ follow all the steps in main.ipynb.
        username VARCHAR(255) NOT NULL UNIQUE,
        password VARCHAR(255) NOT NULL
    );
-   
-   CREATE TABLE products (
-       asin VARCHAR(255) PRIMARY KEY,
-       title VARCHAR(255),
-       brand VARCHAR(255),
-       rating FLOAT,
-       image_url VARCHAR(255)
-   );
-   
-   CREATE TABLE ratings (
-       user_id INT,
-       product_id VARCHAR(255),
-       rating FLOAT,
-       PRIMARY KEY (user_id, product_id),
-       FOREIGN KEY (user_id) REFERENCES users(id),
-       FOREIGN KEY (product_id) REFERENCES products(asin)
-   );
 
 4. **Update Database Credentials in backend/app.py**:
      ```bash
