@@ -33,26 +33,15 @@ Before you begin, ensure you have the following installed:
 ---
 
 ## Loading and Training Models
+follow all the steps in main.ipynb.
 
-1. **Install Python Dependencies**:
-   Navigate to the `backend` folder and install the required Python packages:
+## Saving Models as Pickle Files
+follow all the steps in main.ipynb.
 
-   ```bash
-   cd backend
-   pip install -r requirements.txt
+## Setting Up the MySQL Database
+1. Install MySQL
+2. Create Database:
+  login first
+''bash
+CREATE DATABASE recommendation_system;
 
-2. **Load and Preprocess Data**:
-   - Place your dataset (e.g., dataset.csv) in the backend/data/ folder.
-   - Use a Python script to load and preprocess the data. For example:
-
-   ```bash
-   import pandas as pd
-   from sklearn.feature_extraction.text import TfidfVectorizer
-   from sklearn.metrics.pairwise import cosine_similarity
-   
-   # Load dataset
-   df = pd.read_csv('data/dataset.csv')
-   
-   # Preprocess data (e.g., text cleaning, feature extraction)
-   tfidf = TfidfVectorizer(stop_words='english')
-   tfidf_matrix = tfidf.fit_transform(df['description'])
