@@ -72,10 +72,12 @@ follow all the steps in main.ipynb.
 ---
 ## Running the Flask Backend
 in terminal, run this to open the directory:
+
       ```bash
       cd backend
 
 Run the Flask Server by:
+
       ```bash
       python app.py
 
@@ -83,17 +85,17 @@ Run the Flask Server by:
 ## Running the React Frontend
 in different terminal/split the terminal to open different directory:
 
-      ```bash
+      
       cd frontend
 
 Install:
 
-      ```bash
+      
       npm install
 
 start the react:
 
-      ```bash
+      
       npm start
 
 The frontend will start at http://localhost:3000. or click the link  in the terminal
