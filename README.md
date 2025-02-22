@@ -72,13 +72,12 @@ follow all the steps in main.ipynb.
 ---
 ## Running the Flask Backend
 in terminal, run this to open the directory:
-   ```bash
-   cd backend
-
+      ```bash
+      cd backend
 
 Run the Flask Server by:
-   ```bash
-   python app.py
+      ```bash
+      python app.py
 
 
 ## Running the React Frontend
