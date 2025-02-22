@@ -82,14 +82,16 @@ Run the Flask Server by:
 
 ## Running the React Frontend
 in different terminal/split the terminal to open different directory:
-      ```bash
-      cd frontend
+   ```bash
+   cd frontend
+
 Install:
-      ```bash
-      npm install
+   ```bash
+   npm install
+
 start the react:
-      ```bash
-      npm start
+   ```bash
+   npm start
 
 The frontend will start at http://localhost:3000. or click the link  in the terminal
 
