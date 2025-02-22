@@ -45,7 +45,9 @@ follow all the steps in main.ipynb.
 ```bash
 CREATE DATABASE recommendation_system;
 
+
 3. Create Tables:
+
 ```bash
 USE recommendation_system;
 
@@ -71,6 +73,8 @@ CREATE TABLE ratings (
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (product_id) REFERENCES products(asin)
 );
+
+
 
 4. **Update Database Credentials in backend/app.py**:
   ```bash
