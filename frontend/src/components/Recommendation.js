@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'; // Add useContext
+import React, { useState, useContext } from 'react'; 
 import { fetchRecommendations } from '../api';
 import {
     Container,
@@ -12,12 +12,14 @@ import {
     CircularProgress,
     Snackbar,
     Alert,
+    Grow,
+    Fade
 } from '@mui/material';
 import { Search as SearchIcon } from '@mui/icons-material';
-import { UserContext } from '../context/UserContext'; // Import UserContext
+import { UserContext } from '../context/UserContext';
 
 const Recommendation = () => {
-    const { user } = useContext(UserContext); // Access user from context
+    const { user } = useContext(UserContext);
     const [product_title, setProductTitle] = useState('');
     const [recommendations, setRecommendations] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -27,9 +29,7 @@ const Recommendation = () => {
         setLoading(true);
         setError(null);
         try {
-            // Use user.user_id from context
             const data = await fetchRecommendations(user.user_id, product_title, 5);
-            console.log('API Response:', data); // Debugging
             setRecommendations(data);
         } catch (error) {
             console.error('Error in component:', error);
@@ -45,11 +45,12 @@ const Recommendation = () => {
 
     return (
         <Container maxWidth="md" style={{ marginTop: '2rem' }}>
-            <Typography variant="h3" align="center" gutterBottom>
-                Product Recommendations
-            </Typography>
+            <Fade in timeout={1000}>
+                <Typography variant="h3" align="center" gutterBottom>
+                    Product Recommendations
+                </Typography>
+            </Fade>
 
-            {/* Input Fields */}
             <Grid container spacing={2} justifyContent="center" style={{ marginBottom: '2rem' }}>
                 <Grid item xs={12} sm={6}>
                     <TextField
@@ -66,32 +67,34 @@ const Recommendation = () => {
                         color="primary"
                         onClick={handleFetchRecommendations}
                         startIcon={<SearchIcon />}
-                        disabled={loading || !user} // Disable if user is not logged in
+                        disabled={loading || !user}
+                        style={{ padding: '0.75rem 2rem' }}
                     >
                         {loading ? <CircularProgress size={24} /> : 'Get Recommendations'}
                     </Button>
                 </Grid>
             </Grid>
 
-            {/* Recommendations */}
             {recommendations.length > 0 && (
-                <Typography variant="h5" gutterBottom>
-                    Recommendations
-                </Typography>
+                <Fade in timeout={1000}>
+                    <Typography variant="h5" gutterBottom>
+                        Recommendations
+                    </Typography>
+                </Fade>
             )}
+
             <Grid container spacing={3}>
-                {recommendations.map((item, index) => {
-                    console.log('Image URL:', item.image_url); // Debugging
-                    return (
-                        <Grid item key={index} xs={12} sm={6} md={4}>
-                            <Card>
+                {recommendations.map((item, index) => (
+                    <Grow in timeout={500 + index * 200} key={index}>
+                        <Grid item xs={12} sm={6} md={4}>
+                            <Card elevation={6} style={{ borderRadius: '16px' }}>
                                 <CardMedia
                                     component="img"
                                     height="200"
-                                    image={item.image_url || 'https://via.placeholder.com/200'} // Fallback image
+                                    image={item.image_url || 'https://via.placeholder.com/200'}
                                     alt={item.title}
                                     onError={(e) => {
-                                        e.target.src = 'https://via.placeholder.com/200'; // Fallback image
+                                        e.target.src = 'https://via.placeholder.com/200';
                                     }}
                                 />
                                 <CardContent>
@@ -107,11 +110,10 @@ const Recommendation = () => {
                                 </CardContent>
                             </Card>
                         </Grid>
-                    );
-                })}
+                    </Grow>
+                ))}
             </Grid>
 
-            {/* Error Snackbar */}
             <Snackbar
                 open={!!error}
                 autoHideDuration={6000}
