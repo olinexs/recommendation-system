@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Product Recommendation System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a Flask and React-based product recommendation system. It uses **collaborative filtering** and **content-based filtering** to recommend products to users.
 
-## Available Scripts
+## Features
+- User registration and login
+- Product recommendations based on user preferences
+- Hybrid recommendation system (collaborative + content-based)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Before you begin, ensure you have the following installed:
+- Python 3.8+
+- Node.js 16+
+- MySQL Server
+- Git
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Loading and Training Models
+follow all the steps in main.ipynb.
 
-### `npm run build`
+## Saving Models as Pickle Files
+follow all the steps in main.ipynb.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Setting Up the MySQL Database
+1. Install MySQL
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Create Database:
+   
+   ```bash
+   CREATE DATABASE recommendation_system;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Create Tables:
 
-### `npm run eject`
+   ```bash
+   USE recommendation_system;
+   
+   CREATE TABLE users (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       username VARCHAR(255) NOT NULL UNIQUE,
+       password VARCHAR(255) NOT NULL
+   );
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **Update Database Credentials in backend/app.py**:
+     ```bash
+     app.config['MYSQL_HOST'] = 'localhost'
+     app.config['MYSQL_USER'] = 'root'
+     app.config['MYSQL_PASSWORD'] = 'your_password'
+     app.config['MYSQL_DB'] = 'recommendation_system'
+---
+## Running the Flask Backend
+in terminal, run this to open the directory:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+      cd backend
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Run the Flask Server by:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+      python app.py
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Running the React Frontend
+in different terminal/split the terminal to open different directory:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+      
+      cd frontend
 
-### Code Splitting
+Install:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+      
+      npm install
 
-### Analyzing the Bundle Size
+start the react:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+      
+      npm start
 
-### Making a Progressive Web App
+The frontend will start at http://localhost:3000. or click the link  in the terminal
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
